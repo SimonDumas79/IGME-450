@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412a1db9a8522017a6f960ef1c511c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravitationalConstant: 1
+  gravitationalConstant: 60
   staticGravityObjects: []
   gravityObjects: []
 --- !u!4 &1218496516

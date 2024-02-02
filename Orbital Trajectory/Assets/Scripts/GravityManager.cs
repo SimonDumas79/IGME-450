@@ -36,7 +36,7 @@ public class GravityManager : MonoBehaviour
             {
                 Vector2 direction = staticGravityObjects[j].transform.position - gravityObjects[i].transform.position;
                 float distance = direction.magnitude;
-                float forceMagnitude = gravitationalConstant * (gravityObjects[i].mass * gravityObjects[j].mass)/(distance * distance);
+                float forceMagnitude = gravitationalConstant * (gravityObjects[i].mass * gravityObjects[j].mass)/(distance * distance) * Time.deltaTime;
 
                 Vector2 force = (direction/distance) * forceMagnitude;
                 gravityObjects[i].rb.AddForce(force);
@@ -46,7 +46,7 @@ public class GravityManager : MonoBehaviour
             {
                 Vector2 direction = gravityObjects[j].transform.position - gravityObjects[i].transform.position;
                 float distance = direction.magnitude;
-                float forceMagnitude = gravitationalConstant * (gravityObjects[i].mass * gravityObjects[j].mass)/(distance * distance);
+                float forceMagnitude = gravitationalConstant * (gravityObjects[i].mass * gravityObjects[j].mass)/(distance * distance) * Time.deltaTime;
 
                 Vector2 force = (direction/distance) * forceMagnitude;
                 gravityObjects[i].rb.AddForce(force);
