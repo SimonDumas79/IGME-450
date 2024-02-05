@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //the size of the input zone that the player can start any touch input
-    private float touchStartRadius;
+    public float touchStartRadius;
     
     //This should be reset every time the player touches within the input radius.
     //drag input's orgin
@@ -14,15 +15,42 @@ public class PlayerController : MonoBehaviour
     //angle between current startPosition and the current touchPosition, controls angle of flight
     private Vector2 dragAngle;
 
+    private bool mouseDown;
+
     void Start()
     {
-        
+        Input.simulateMouseWithTouches = true;
     }
 
     void Update()
     {
+
+        if(Input.GetMouseButtonDown(0)) 
+        {
+            
+            float squaredDistance = (transform.position.x - Input.mousePosition.x) * (transform.position.x - Input.mousePosition.x) + (transform.position.y - Input.mousePosition.y) * (transform.position.y - Input.mousePosition.y);
+
+            if (squaredDistance < touchStartRadius * touchStartRadius)
+            {
+                touchStartPoint = Input.mousePosition;
+                mouseDown = true;
+            }
+        }
+
+        if (mouseDown)
+        {
+            dragAngle = (touchStartPoint - new Vector2(Input.mousePosition.x, Input.mousePosition.y)).normalized;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+
+            mouseDown = false;
+        }
+
+
         //get and handle touch and drag input
-        if(Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -44,10 +72,10 @@ public class PlayerController : MonoBehaviour
             }
             
             else if( touch.phase == TouchPhase.Ended ) 
-            { 
-                
-            }
+            {
 
+            }
+            Debug.Log(dragAngle);
         }
     }
 }
