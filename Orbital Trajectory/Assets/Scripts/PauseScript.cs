@@ -5,11 +5,8 @@ using UnityEngine;
 
 public class PauseScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    GameObject pauseMenu, pauseButton, resumeButton, levelSelectButton, restartButton, mainMenuButton;
 
     // Update is called once per frame
     void Update()
@@ -17,8 +14,35 @@ public class PauseScript : MonoBehaviour
         
     }
 
-    public void test()
+    public void pause()
     {
-        Debug.Log("Test");
+        pauseMenu.SetActive(true);
+        pauseButton.SetActive(false);
+        Time.timeScale = 0;
     }
+    public void resume()
+    {
+        pauseMenu.SetActive(false);
+        pauseButton.SetActive(true);
+        Time.timeScale = 1;
+    }
+    public void restart()
+    {
+        pauseMenu.SetActive(false);
+        pauseButton.SetActive(true);
+        Time.timeScale = 1;
+    }
+    public void levelSelect()
+    {
+        pauseMenu.SetActive(false);
+        pauseButton.SetActive(true);
+        Time.timeScale = 1;
+    }
+    public void mainMenu()
+    {
+        pauseMenu.SetActive(false);
+        pauseButton.SetActive(true);
+        Time.timeScale = 1;
+    }
+
 }
