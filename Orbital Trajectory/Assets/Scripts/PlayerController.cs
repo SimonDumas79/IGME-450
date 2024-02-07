@@ -7,7 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     //the size of the input zone that the player can start any touch input
     public float touchStartRadius;
-    
+
+    public FuelBar fuelBar;
+
+    public float launchSpeed;
+
     //This should be reset every time the player touches within the input radius.
     //drag input's orgin
     private Vector2 touchStartPoint;
@@ -22,51 +26,97 @@ public class PlayerController : MonoBehaviour
     float currentWidth;  // current width
     float scaleFactor;
 
+    bool launched = false;
+
+    public float boostTime = 2.0f;
+    public float boostForce = 2.0f;
+    private Rigidbody2D rb;
+    
+
     void Start()
     {
         Input.simulateMouseWithTouches = true;
-        dragAngle = new Vector2();
+        dragAngle = new Vector2(0,1);
         currentWidth = radius.transform.localScale.x;
         scaleFactor = touchStartRadius / currentWidth;
         radius.transform.localScale = new Vector3(scaleFactor/2.5f, scaleFactor/2.5f, radius.transform.localScale.z);
+
+        rb = GetComponent<Rigidbody2D>();
+        fuelBar.SetMaxFuel(boostTime);
     }
 
     void Update()
     {
-
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(Input.GetMouseButtonDown(0)) 
+        if(!launched)
         {
-            float squaredDistance = (transform.position.x - mousePosition.x) * (transform.position.x - mousePosition.x) + (transform.position.y - mousePosition.y) * (transform.position.y - mousePosition.y);
-
-            if (squaredDistance < touchStartRadius * touchStartRadius)
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if(Input.GetMouseButtonDown(0)) 
             {
-                touchStartPoint = Input.mousePosition;
-                mouseDown = true;
+                float squaredDistance = (transform.position.x - mousePosition.x) * (transform.position.x - mousePosition.x) + (transform.position.y - mousePosition.y) * (transform.position.y - mousePosition.y);
 
-                //Debug.Log($"{Input.mousePosition}, {transform.position}, {squaredDistance}");
+                if (squaredDistance < touchStartRadius * touchStartRadius)
+                {
+                    touchStartPoint = Input.mousePosition;
+                    mouseDown = true;
+                }
             }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            mouseDown = false;
-        }
-        else if (mouseDown)
-        {
-            dragAngle = (transform.position - mousePosition).normalized;
-            Debug.Log(dragAngle);
-        }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                if(mouseDown)
+                {
+                    launched = true;
+                    mouseDown = false;
+                    rb.velocity = launchSpeed * dragAngle;
+                }
+            }
+            else if (mouseDown)
+            {
+                dragAngle = (100 * (transform.position - mousePosition)).normalized;
+                Debug.Log(dragAngle);
+            }
 
-        //angle the ship towards the shot angle
-        float angle = Mathf.Atan2(dragAngle.y, dragAngle.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        UpdateRadius(Time.realtimeSinceStartup);
+            //angle the ship towards the shot angle
+            float angle = Mathf.Atan2(dragAngle.y, dragAngle.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            UpdateRadius(Time.realtimeSinceStartup);
+        }
+        else
+        {
+            DeactivateRadius();
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseDown = true;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                mouseDown = false;
+            }
+            else if (mouseDown)
+            {
+                float newFuel = fuelBar.slider.value - Time.deltaTime; 
+                fuelBar.SetFuel(newFuel);
+
+                rb.AddForce(rb.velocity.normalized * boostForce * Time.deltaTime);
+            }
+
+
+            //angle the ship towards the velocity
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     private void UpdateRadius(float totalTime)
     {
         Color color = radius.GetComponent<SpriteRenderer>().color;
         color.a = Math.Abs((float)(Math.Sin(totalTime/2))/2)-.25f;
+        radius.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    private void DeactivateRadius()
+    {
+        Color color = radius.GetComponent<SpriteRenderer>().color;
+        color.a -=Time.deltaTime;
         radius.GetComponent<SpriteRenderer>().color = color;
     }
 }
