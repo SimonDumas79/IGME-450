@@ -12,6 +12,7 @@ public class GravityObject : MonoBehaviour
     [SerializeField]
     private bool isKinematic = true;
     public Rigidbody2D rb;
+    public float radius = 1;
 
     void Start()
     {
