@@ -14,6 +14,8 @@ public class LoadingSceneTrigger : MonoBehaviour
         if(targetScene == "")
         {
             targetScene = SceneManager.GetActiveScene().name;
+            LoadingData.sceneToLoad = targetScene;
+            SceneManager.LoadScene("LoadingScene");
         }
         else
         {
