@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: mass
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 3500173079101361837, guid: 39a1fb0d8c48c4d4b990dc46c7a68c62, type: 3}
+      propertyPath: radius
+      value: 0.96
+      objectReference: {fileID: 0}
     - target: {fileID: 3706736572410088470, guid: 39a1fb0d8c48c4d4b990dc46c7a68c62, type: 3}
       propertyPath: m_RootOrder
       value: 4
