@@ -189,7 +189,7 @@ MonoBehaviour:
   launchSpeed: 15
   radius: {fileID: 2277823438566554848}
   boostTime: 2
-  boostForce: 600
+  boostForce: 5000
 --- !u!50 &1053293069881970483
 Rigidbody2D:
   serializedVersion: 4

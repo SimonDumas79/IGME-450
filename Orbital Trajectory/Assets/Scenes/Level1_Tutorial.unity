@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: fuelBar
       value: 
       objectReference: {fileID: 570983606}
+    - target: {fileID: 109275918515220816, guid: 81d4e7e18a088a34fa1301fb72a53f26, type: 3}
+      propertyPath: boostForce
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 589662405736591565, guid: 81d4e7e18a088a34fa1301fb72a53f26, type: 3}
       propertyPath: m_RootOrder
       value: 2
