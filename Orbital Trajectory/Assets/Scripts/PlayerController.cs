@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     public float launchSpeed;
 
+    private Vector2 startPosition;
+
     //This should be reset every time the player touches within the input radius.
     //drag input's orgin
     private Vector2 touchStartPoint;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         fuelBar.SetMaxFuel(boostTime);
+        startPosition = transform.position;
     }
 
     void Update()
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.Atan2(dragAngle.y, dragAngle.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             UpdateRadius(Time.realtimeSinceStartup);
+            transform.position = startPosition;
         }
         else
         {
