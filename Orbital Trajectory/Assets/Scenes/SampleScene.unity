@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &1306115111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4434182914966057010, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+  m_PrefabInstance: {fileID: 2157482470600028599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975877eb6b53aae4c8258a1a63eb509a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1324903065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,6 +264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 109275918515220816, guid: 81d4e7e18a088a34fa1301fb72a53f26, type: 3}
+      propertyPath: fuelBar
+      value: 
+      objectReference: {fileID: 1306115111}
     - target: {fileID: 589662405736591565, guid: 81d4e7e18a088a34fa1301fb72a53f26, type: 3}
       propertyPath: m_RootOrder
       value: 1

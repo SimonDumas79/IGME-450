@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateRadius(float totalTime)
     {
         Color color = radius.GetComponent<SpriteRenderer>().color;
-        color.a = Math.Abs((float)(Math.Sin(totalTime/2))/2)-.25f;
+        color.a = Math.Abs((float)(Math.Sin(totalTime))/2) - .1f;
         radius.GetComponent<SpriteRenderer>().color = color;
     }
 
