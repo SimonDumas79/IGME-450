@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (mouseDown)
             {
-                dragAngle = (100 * (transform.position - mousePosition)).normalized;
+                dragAngle = -(transform.position - mousePosition).normalized;
                 Debug.Log(dragAngle);
             }
 
