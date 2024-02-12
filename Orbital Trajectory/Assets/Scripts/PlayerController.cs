@@ -7,7 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     //the size of the input zone that the player can start any touch input
     public float touchStartRadius;
-    
+
+    public FuelBar fuelBar;
+
+    public float launchSpeed;
+
+    private Vector2 startPosition;
+
     //This should be reset every time the player touches within the input radius.
     //drag input's orgin
     private Vector2 touchStartPoint;
@@ -17,65 +23,104 @@ public class PlayerController : MonoBehaviour
 
     private bool mouseDown;
 
+    public GameObject radius;
+
+    float currentWidth;  // current width
+    float scaleFactor;
+
+    bool launched = false;
+
+    public float boostTime = 2.0f;
+    public float boostForce = 2.0f;
+    private Rigidbody2D rb;
+    
+
     void Start()
     {
         Input.simulateMouseWithTouches = true;
+        dragAngle = new Vector2(0,1);
+        currentWidth = radius.transform.localScale.x;
+        scaleFactor = touchStartRadius / currentWidth;
+        radius.transform.localScale = new Vector3(scaleFactor/2.5f, scaleFactor/2.5f, radius.transform.localScale.z);
+
+        rb = GetComponent<Rigidbody2D>();
+        fuelBar.SetMaxFuel(boostTime);
+        startPosition = transform.position;
     }
 
     void Update()
     {
-
-        if(Input.GetMouseButtonDown(0)) 
+        if(!launched)
         {
-            
-            float squaredDistance = (transform.position.x - Input.mousePosition.x) * (transform.position.x - Input.mousePosition.x) + (transform.position.y - Input.mousePosition.y) * (transform.position.y - Input.mousePosition.y);
-
-            if (squaredDistance < touchStartRadius * touchStartRadius)
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if(Input.GetMouseButtonDown(0)) 
             {
-                touchStartPoint = Input.mousePosition;
+                float squaredDistance = (transform.position.x - mousePosition.x) * (transform.position.x - mousePosition.x) + (transform.position.y - mousePosition.y) * (transform.position.y - mousePosition.y);
+
+                if (squaredDistance < touchStartRadius * touchStartRadius)
+                {
+                    touchStartPoint = Input.mousePosition;
+                    mouseDown = true;
+                }
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                if(mouseDown)
+                {
+                    launched = true;
+                    mouseDown = false;
+                    rb.velocity = launchSpeed * dragAngle;
+                }
+            }
+            else if (mouseDown)
+            {
+                dragAngle = (100 * (transform.position - mousePosition)).normalized;
+                Debug.Log(dragAngle);
+            }
+
+            //angle the ship towards the shot angle
+            float angle = Mathf.Atan2(dragAngle.y, dragAngle.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            UpdateRadius(Time.realtimeSinceStartup);
+            transform.position = startPosition;
+        }
+        else
+        {
+            DeactivateRadius();
+            if (Input.GetMouseButtonDown(0))
+            {
                 mouseDown = true;
             }
-        }
-
-        if (mouseDown)
-        {
-            dragAngle = (touchStartPoint - new Vector2(Input.mousePosition.x, Input.mousePosition.y)).normalized;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-
-            mouseDown = false;
-        }
-
-
-        //get and handle touch and drag input
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            //if a touch just started, check if it is in the touch radius and store the position if it is
-            if(touch.phase == TouchPhase.Began ) 
+            else if (Input.GetMouseButtonUp(0))
             {
-                float squaredDistance = (transform.position.x - touch.position.x) * (transform.position.x - touch.position.x) + (transform.position.y - touch.position.y) * (transform.position.y - touch.position.y);
-
-                if(squaredDistance < touchStartRadius * touchStartRadius)
-                {
-                    touchStartPoint = touch.position;
-                }
-
+                mouseDown = false;
             }
-            //change the angle of the ship based on touch drag
-            else if(touch.phase == TouchPhase.Moved )
+            else if (mouseDown)
             {
-                dragAngle = (touchStartPoint - touch.position).normalized;
-            }
-            
-            else if( touch.phase == TouchPhase.Ended ) 
-            {
+                float newFuel = fuelBar.slider.value - Time.deltaTime; 
+                fuelBar.SetFuel(newFuel);
 
+                rb.AddForce(rb.velocity.normalized * boostForce * Time.deltaTime);
             }
-            Debug.Log(dragAngle);
+
+
+            //angle the ship towards the velocity
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+    }
+
+    private void UpdateRadius(float totalTime)
+    {
+        Color color = radius.GetComponent<SpriteRenderer>().color;
+        color.a = Math.Abs((float)(Math.Sin(totalTime))/2) - .1f;
+        radius.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    private void DeactivateRadius()
+    {
+        Color color = radius.GetComponent<SpriteRenderer>().color;
+        color.a -=Time.deltaTime;
+        radius.GetComponent<SpriteRenderer>().color = color;
     }
 }
