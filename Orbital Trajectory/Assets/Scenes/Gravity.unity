@@ -485,6 +485,11 @@ MonoBehaviour:
   gravitationalConstant: 60
   staticGravityObjects: []
   gravityObjects: []
+  trajectorySteps: 120
+  trajectoryTime: 2
+  focusObj: {fileID: 1163034243}
+  trajectoryIndicator: {fileID: 8974532575630102514, guid: cfac1059422f5045abf62a84ec313e4a, type: 3}
+  run: 0
 --- !u!4 &1218496516
 Transform:
   m_ObjectHideFlags: 0

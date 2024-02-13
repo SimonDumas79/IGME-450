@@ -19,7 +19,7 @@ public class GravityObject : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.mass = mass;
         rb.velocity = initialVelocity;
-
+        rb.bodyType = isKinematic ? RigidbodyType2D.Dynamic : RigidbodyType2D.Static;
         if(isKinematic)
         {
             GravityManager.singleton.AddGravityObject(this);
