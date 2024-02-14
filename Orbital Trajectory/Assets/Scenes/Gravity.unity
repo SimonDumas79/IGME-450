@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f17b31efe163770dba49d802380a3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 100
+  mass: 10
   initialVelocity: {x: 0, y: 0}
   isKinematic: 0
   rb: {fileID: 0}
