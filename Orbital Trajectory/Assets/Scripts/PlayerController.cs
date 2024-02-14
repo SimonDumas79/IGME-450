@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float touchStartRadius;
 
     public FuelBar fuelBar;
+    public ParticleSystem boostParticles;
+    public ParticleSystem launchParticles;
 
     public float launchSpeed;
 
@@ -70,11 +72,12 @@ public class PlayerController : MonoBehaviour
                     launched = true;
                     mouseDown = false;
                     rb.velocity = launchSpeed * dragAngle;
+                    launchParticles.Play();
                 }
             }
             else if (mouseDown)
             {
-                dragAngle = (100 * (transform.position - mousePosition)).normalized;
+                dragAngle = -(transform.position - mousePosition).normalized;
                 Debug.Log(dragAngle);
             }
 
@@ -87,13 +90,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             DeactivateRadius();
+
             if (Input.GetMouseButtonDown(0))
             {
                 mouseDown = true;
+                boostParticles.Play();
             }
             else if (Input.GetMouseButtonUp(0))
             {
                 mouseDown = false;
+                boostParticles.Stop();
             }
             else if (mouseDown)
             {
