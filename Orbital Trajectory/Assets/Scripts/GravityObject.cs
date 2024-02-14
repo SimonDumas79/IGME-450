@@ -12,14 +12,13 @@ public class GravityObject : MonoBehaviour
     [SerializeField]
     private bool isKinematic = true;
     public Rigidbody2D rb;
-    //public float radius = 1;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.mass = mass;
         rb.velocity = initialVelocity;
-
+        rb.bodyType = isKinematic ? RigidbodyType2D.Dynamic : RigidbodyType2D.Static;
         if(isKinematic)
         {
             GravityManager.singleton.AddGravityObject(this);
@@ -29,10 +28,4 @@ public class GravityObject : MonoBehaviour
             GravityManager.singleton.AddStaticGravityObject(this);
         }
     }
-
-    /*private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(rb.transform.position, radius);
-    }*/
 }
