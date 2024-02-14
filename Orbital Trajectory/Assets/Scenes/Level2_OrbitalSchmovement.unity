@@ -263,6 +263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3755731219908750792, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
+      propertyPath: initialVelocity.x
+      value: 5.69
+      objectReference: {fileID: 0}
     - target: {fileID: 6657331891216498772, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -417,6 +421,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509740257178987983, guid: 65c179e257a8dc24bb69744fe8e18640, type: 3}
+      propertyPath: run
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509740257178987983, guid: 65c179e257a8dc24bb69744fe8e18640, type: 3}
+      propertyPath: focusObj
+      value: 
+      objectReference: {fileID: 1472860067}
+    - target: {fileID: 1509740257178987983, guid: 65c179e257a8dc24bb69744fe8e18640, type: 3}
+      propertyPath: trajectoryTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509740257178987983, guid: 65c179e257a8dc24bb69744fe8e18640, type: 3}
+      propertyPath: trajectorySteps
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509740257178987983, guid: 65c179e257a8dc24bb69744fe8e18640, type: 3}
+      propertyPath: trajectoryIndicator
+      value: 
+      objectReference: {fileID: 8974532575630102514, guid: cfac1059422f5045abf62a84ec313e4a, type: 3}
     - target: {fileID: 5966578436681255540, guid: 65c179e257a8dc24bb69744fe8e18640, type: 3}
       propertyPath: m_Name
       value: GravityManager
@@ -470,6 +494,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c179e257a8dc24bb69744fe8e18640, type: 3}
+--- !u!1 &1472860067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2996336161443094384, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
+  m_PrefabInstance: {fileID: 777422062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1689328394
 PrefabInstance:
   m_ObjectHideFlags: 0
