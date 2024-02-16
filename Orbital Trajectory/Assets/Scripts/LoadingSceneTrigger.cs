@@ -24,4 +24,9 @@ public class LoadingSceneTrigger : MonoBehaviour
         }
         
     }
+    public void LoadLevelSelect()
+    {
+        GameData.LoadLevelSelect();
+
+    }
 }
