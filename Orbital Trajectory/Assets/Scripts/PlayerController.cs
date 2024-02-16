@@ -35,7 +35,14 @@ public class PlayerController : MonoBehaviour
     public float boostTime = 2.0f;
     public float boostForce = 2.0f;
     private Rigidbody2D rb;
-    
+
+    [SerializeField]
+    private float secondsToPredict;
+    [SerializeField]
+    private int pointsToDisplay;
+    [SerializeField]
+    private GameObject indicatorPrefab;
+    private List<GameObject> trajectoryIndicators;
 
     void Start()
     {
@@ -48,6 +55,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         fuelBar.SetMaxFuel(boostTime);
         startPosition = transform.position;
+
+        trajectoryIndicators = new List<GameObject>();
     }
 
     void Update()
@@ -55,7 +64,7 @@ public class PlayerController : MonoBehaviour
         if(!launched)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(Input.GetMouseButtonDown(0)) 
+            if(Input.GetMouseButtonDown(0))
             {
                 float squaredDistance = (transform.position.x - mousePosition.x) * (transform.position.x - mousePosition.x) + (transform.position.y - mousePosition.y) * (transform.position.y - mousePosition.y);
 
@@ -69,6 +78,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(mouseDown)
                 {
+                    DestroyIndicators();
                     launched = true;
                     mouseDown = false;
                     rb.velocity = launchSpeed * dragAngle;
@@ -78,6 +88,7 @@ public class PlayerController : MonoBehaviour
             else if (mouseDown)
             {
                 dragAngle = -(transform.position - mousePosition).normalized;
+                DrawTrajectory();
                 Debug.Log(dragAngle);
             }
 
@@ -103,7 +114,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (mouseDown)
             {
-                float newFuel = fuelBar.slider.value - Time.deltaTime; 
+                float newFuel = fuelBar.slider.value - Time.deltaTime;
                 fuelBar.SetFuel(newFuel);
 
                 rb.AddForce(rb.velocity.normalized * boostForce * Time.deltaTime);
@@ -116,10 +127,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void DrawTrajectory()
+    {
+        if(pointsToDisplay > trajectoryIndicators.Count)
+        {
+            int indicatorsToCreate = pointsToDisplay - trajectoryIndicators.Count;
+            for(int i = 0; i < indicatorsToCreate; i++)
+            {
+                trajectoryIndicators.Add(Instantiate(indicatorPrefab));
+            }
+        }
+        rb.velocity = dragAngle * launchSpeed;
+        List<Vector3> points = GravityManager.singleton.CalculateTrajectory(gameObject, pointsToDisplay, secondsToPredict);
+        rb.velocity = Vector2.zero;
+
+        for(int i = 0; i < pointsToDisplay; i++)
+        {
+            trajectoryIndicators[i].SetActive(true);
+            trajectoryIndicators[i].transform.position = (Vector2)points[i];
+            trajectoryIndicators[i].transform.rotation = Quaternion.Euler(0, 0, points[i].z);
+        }
+
+        for(int i = pointsToDisplay; i < trajectoryIndicators.Count; i++)
+        {
+            trajectoryIndicators[i].SetActive(false);
+        }
+    }
+
+    private void DestroyIndicators()
+    {
+        for(int i = 0; i < trajectoryIndicators.Count; i++)
+        {
+            Destroy(trajectoryIndicators[i]);
+        }
+
+        trajectoryIndicators.Clear();
+    }
+
     private void UpdateRadius(float totalTime)
     {
         Color color = radius.GetComponent<SpriteRenderer>().color;
-        color.a = Math.Abs((float)(Math.Sin(totalTime))/2) - .1f;
+        color.a = Math.Abs((float)Math.Sin(totalTime)/2) - .1f;
         radius.GetComponent<SpriteRenderer>().color = color;
     }
 
