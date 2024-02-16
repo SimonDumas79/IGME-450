@@ -247,6 +247,30 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.014061932
       objectReference: {fileID: 0}
+    - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -115
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8501788286678328797, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
