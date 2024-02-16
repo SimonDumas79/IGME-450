@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,21 +15,10 @@ public class GravityManager : MonoBehaviour
     private List<GravityObject> gravityObjects;
 
     [SerializeField]
-    private int trajectorySteps;
-    [SerializeField]
-    private float trajectoryTime;
-    [SerializeField]
-    private GameObject focusObj;
-    [SerializeField]
-    private GameObject trajectoryIndicator;
-    private List<GameObject> trajectoryObjects;
-
-    [SerializeField]
     public bool run;
 
     void Start()
     {
-        trajectoryObjects = new List<GameObject>();
         gravityObjects = new List<GravityObject>();
         staticGravityObjects = new List<GravityObject>();
         if(singleton == null)
@@ -44,44 +34,22 @@ public class GravityManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(run)
+        for(int i = 0; i < gravityObjects.Count; i++)
         {
-            Time.timeScale = 1;
-            for(int i = 0; i < gravityObjects.Count; i++)
+            for(int j = 0; j < staticGravityObjects.Count; j++)
             {
-                for(int j = 0; j < staticGravityObjects.Count; j++)
-                {
-                    Vector2 force = CalculateGravity(gravityObjects[i].transform.position, gravityObjects[i].mass, staticGravityObjects[j].transform.position, staticGravityObjects[j].mass, Time.deltaTime);
-                    gravityObjects[i].rb.AddForce(force);
-                }
-
-                for(int j = i + 1; j < gravityObjects.Count; j++)
-                {
-                    Vector2 force = CalculateGravity(gravityObjects[i].transform.position, gravityObjects[i].mass, gravityObjects[j].transform.position, gravityObjects[j].mass, Time.deltaTime);
-                    gravityObjects[i].rb.AddForce(force);
-                    gravityObjects[j].rb.AddForce(-force);
-                }
+                Vector2 force = CalculateGravity(gravityObjects[i].transform.position, gravityObjects[i].mass, staticGravityObjects[j].transform.position, staticGravityObjects[j].mass, Time.deltaTime);
+                gravityObjects[i].rb.AddForce(force);
             }
-        }
-        else
-        {
-            Time.timeScale = 0;
-            List<Vector2> traj = CalculateTrajectory(focusObj, trajectorySteps, trajectoryTime);
-            for(int i = 0; i < trajectorySteps; i++)
+
+            for(int j = i + 1; j < gravityObjects.Count; j++)
             {
-                if(trajectoryObjects.Count > i)
-                {
-                    trajectoryObjects[i].transform.position = traj[i];
-                }
-                else
-                {
-                    trajectoryObjects.Add(Instantiate(trajectoryIndicator, traj[i], Quaternion.identity));
-                }
+                Vector2 force = CalculateGravity(gravityObjects[i].transform.position, gravityObjects[i].mass, gravityObjects[j].transform.position, gravityObjects[j].mass, Time.deltaTime);
+                gravityObjects[i].rb.AddForce(force);
+                gravityObjects[j].rb.AddForce(-force);
             }
         }
     }
-
-
 
     private Vector2 CalculateGravity(Vector2 pos1, float mass1, Vector2 pos2, float mass2, float timeStep)
     {
@@ -89,23 +57,33 @@ public class GravityManager : MonoBehaviour
         float distance = direction.magnitude;
         float forceMagnitude = gravitationalConstant * (mass1 * mass2)/(distance * distance) * timeStep;
 
-        Vector2 force = (direction/distance) * forceMagnitude;
+        Vector2 force = direction/distance * forceMagnitude;
         return force;
     }
 
-    private List<Vector2> CalculateTrajectory(GameObject focus, int steps, float time)
+    public List<Vector3> CalculateTrajectory(GameObject focus, int stepsToDisplay, float time)
     {
+        int simSteps = Mathf.CeilToInt(time/Time.fixedDeltaTime);
+        if(stepsToDisplay > simSteps)
+        {
+            Debug.LogError("More points requested than simulation steps in requested time (" + simSteps + " steps will be simulated in " + time + " seconds");
+            return null;
+        }
         List<Vector2> dynamicObjectPositions = new List<Vector2>();
         List<Vector2> dynamicObjectVelocities = new List<Vector2>();
         List<Vector2> dynamicObjectAccelerations = new List<Vector2>();
-        List<Vector2> trajectoryPoints = new List<Vector2>();
+        List<Vector3> trajectoryPoints = new List<Vector3>();
+
         int focusIndex = -1;
+
         for(int i = 0; i < gravityObjects.Count; i++)
         {
             Rigidbody2D rb = gravityObjects[i].GetComponent<Rigidbody2D>();
+
             dynamicObjectPositions.Add(gravityObjects[i].transform.position);
             dynamicObjectVelocities.Add(rb.velocity);
             dynamicObjectAccelerations.Add(Vector2.zero);
+
             if(focus == gravityObjects[i].gameObject)
             {
                 focusIndex = i;
@@ -118,8 +96,9 @@ public class GravityManager : MonoBehaviour
             return null;
         }
 
-        float timeSteps = time/steps;
-        for(int s = 0; s < steps; s++)
+        float timeSteps = time/simSteps;
+        int amountBetweenDisplays = simSteps/stepsToDisplay;
+        for(int s = 0; s < simSteps; s++)
         {
 
             for(int i = 0; i < gravityObjects.Count; i++)
@@ -146,7 +125,14 @@ public class GravityManager : MonoBehaviour
                 dynamicObjectVelocities[i] += dynamicObjectAccelerations[i] * timeSteps;
             }
 
-            trajectoryPoints.Add(dynamicObjectPositions[focusIndex]);
+            if((s + 1) % amountBetweenDisplays == 0)
+            {
+                Vector2 position = dynamicObjectPositions[focusIndex];
+                Vector2 velocity = dynamicObjectVelocities[focusIndex];
+                float angle = MathF.Atan2(velocity.y, velocity.x) * (180.0f/MathF.PI) + 30;
+                trajectoryPoints.Add((Vector3)position + (Vector3.forward * angle));
+
+            }
         }
 
         return trajectoryPoints;
