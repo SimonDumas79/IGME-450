@@ -111,6 +111,9 @@ MonoBehaviour:
   radius: {fileID: 5590844465649366537}
   boostTime: 2
   boostForce: 10000
+  secondsToPredict: 1.5
+  pointsToDisplay: 5
+  indicatorPrefab: {fileID: 6787944288064146694, guid: 972650d88041a28daa0fbc810604d99f, type: 3}
 --- !u!50 &7987336229836132879
 Rigidbody2D:
   serializedVersion: 4
