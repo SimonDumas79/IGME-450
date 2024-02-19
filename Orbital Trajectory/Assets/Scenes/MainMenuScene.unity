@@ -609,9 +609,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550108392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -485, y: -220, z: 0}
-  m_LocalScale: {x: 1.3, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -70.01, z: 0}
+  m_LocalScale: {x: 97.66899, y: 75.13, z: 75.13}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2134932126}
   m_RootOrder: -1
@@ -1176,8 +1176,8 @@ Canvas:
   m_GameObject: {fileID: 2134932122}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 59754740}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
