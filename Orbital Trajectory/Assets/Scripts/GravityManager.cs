@@ -100,7 +100,6 @@ public class GravityManager : MonoBehaviour
         int amountBetweenDisplays = simSteps/stepsToDisplay;
         for(int s = 0; s < simSteps; s++)
         {
-
             for(int i = 0; i < gravityObjects.Count; i++)
             {
                 dynamicObjectAccelerations[i] = Vector2.zero;
@@ -116,7 +115,7 @@ public class GravityManager : MonoBehaviour
 
                 for(int j = i + 1; j < gravityObjects.Count; j++)
                 {
-                    Vector2 force = CalculateGravity(dynamicObjectPositions[i], gravityObjects[i].mass, dynamicObjectPositions[i], gravityObjects[j].mass, timeSteps);
+                    Vector2 force = CalculateGravity(dynamicObjectPositions[i], gravityObjects[i].mass, dynamicObjectPositions[j], gravityObjects[j].mass, timeSteps);
                     dynamicObjectAccelerations[i] += force/gravityObjects[i].mass;
                     dynamicObjectAccelerations[j] -= force/gravityObjects[j].mass;
                 }
