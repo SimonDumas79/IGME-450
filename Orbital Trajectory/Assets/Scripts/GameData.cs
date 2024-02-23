@@ -7,17 +7,32 @@ using UnityEngine.SceneManagement;
 public class GameData
 {
     static Scene LevelSelect;
-    string[] levelArray;
-    public string[] getAllLevels()
+    public static List<string> levelList;
+    public static List<string> getAllLevels()
     {
-        Scene scenes = SceneManager.GetSceneByPath("Assets/Scenes/Completed_Levels");
+        Scene scenes = SceneManager.GetSceneByPath("./Assets/Scenes/Completed_Levels");
+        int counter = 0;
 
-        string[] a = { "a"};
-        return a;
+        List<Scene> sceneNames = new List<Scene>();
+        List<string> sceneString = new List<string>();
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            if(SceneUtility.GetScenePathByBuildIndex(i).Contains("Level" + (counter + 1)+"_"))
+            {
+                sceneString.Add(SceneUtility.GetScenePathByBuildIndex(i));
+                Debug.Log(SceneUtility.GetScenePathByBuildIndex(i));
+                counter++;
+            }
+        }
+        return sceneString;
     }
     public static void LoadLevelSelect()
     {
-
+        
+        levelList = getAllLevels();
+        LoadingData.sceneToLoad = "LevelSelect";
+        SceneManager.LoadScene("LoadingScene");
+        
     }
 }
 

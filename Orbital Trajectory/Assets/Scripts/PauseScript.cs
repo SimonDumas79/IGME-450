@@ -44,5 +44,9 @@ public class PauseScript : MonoBehaviour
         pauseButton.SetActive(true);
         Time.timeScale = 1;
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 
 }

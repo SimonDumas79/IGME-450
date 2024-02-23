@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 1263014}
   - component: {fileID: 1263013}
   - component: {fileID: 1263012}
+  - component: {fileID: 1263015}
   m_Layer: 5
   m_Name: Level_Select
   m_TagString: Untagged
@@ -206,7 +207,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1263013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1263015}
+        m_TargetAssemblyTypeName: LoadingSceneTrigger, Assembly-CSharp
+        m_MethodName: LoadLevelSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1263013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263010}
   m_CullTransparentMesh: 1
+--- !u!114 &1263015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949c610148a2192438cd20c013fa3a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: 
 --- !u!1 &7264322
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +500,7 @@ GameObject:
   - component: {fileID: 125235637}
   - component: {fileID: 125235636}
   - component: {fileID: 125235635}
+  - component: {fileID: 125235638}
   m_Layer: 5
   m_Name: Play_Button
   m_TagString: Untagged
@@ -545,7 +572,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 125235636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 125235638}
+        m_TargetAssemblyTypeName: LoadingSceneTrigger, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &125235636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +623,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125235633}
   m_CullTransparentMesh: 1
+--- !u!114 &125235638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125235633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949c610148a2192438cd20c013fa3a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: Level1_LostInSpace
 --- !u!1 &550108392
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +800,7 @@ GameObject:
   - component: {fileID: 753502549}
   - component: {fileID: 753502548}
   - component: {fileID: 753502547}
+  - component: {fileID: 753502550}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -819,7 +872,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753502548}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 753502550}
+        m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &753502548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,6 +923,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753502545}
   m_CullTransparentMesh: 1
+--- !u!114 &753502550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753502545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad7c6e0c4291744abab1229a2ed0790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  pauseButton: {fileID: 0}
+  resumeButton: {fileID: 0}
+  levelSelectButton: {fileID: 0}
+  restartButton: {fileID: 0}
+  mainMenuButton: {fileID: 0}
 --- !u!1 &1223569146
 GameObject:
   m_ObjectHideFlags: 0
