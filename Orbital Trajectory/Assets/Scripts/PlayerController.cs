@@ -121,8 +121,14 @@ public class PlayerController : MonoBehaviour
             {
                 float newFuel = fuelBar.slider.value - Time.deltaTime;
                 fuelBar.SetFuel(newFuel);
-
-                rb.AddForce(rb.velocity.normalized * boostForce * Time.deltaTime);
+                if(newFuel > 0)
+                {
+                    rb.AddForce(rb.velocity.normalized * boostForce * Time.deltaTime);
+                }
+                else
+                {
+                    boostParticles.Stop();
+                }
             }
 
 
