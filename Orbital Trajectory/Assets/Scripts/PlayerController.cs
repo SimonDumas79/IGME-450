@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour
     private GameObject indicatorPrefab;
     private List<GameObject> trajectoryIndicators;
 
+    public bool Launched
+    {
+        get { return launched; }
+    }
+
     void Start()
     {
         Input.simulateMouseWithTouches = true;
