@@ -13,21 +13,6 @@ public class EndScreen : MonoBehaviour
     [SerializeField]
     private TMP_Text scoreText;
 
-    void Start()
-    {
-        LoadingSceneTrigger nextSceneTrigger = nextLevelButton.GetComponent<LoadingSceneTrigger>();
-        if(GameData.levelList == null)
-        {
-            GameData.levelList = GameData.getAllLevels();
-        }
-        int levelIndex = GameData.levelList.IndexOf(SceneManager.GetActiveScene().name);
-        if(GameData.levelList.Count > levelIndex + 1)
-        {
-            nextSceneTrigger.targetScene = GameData.levelList[levelIndex + 1];
-        }
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
