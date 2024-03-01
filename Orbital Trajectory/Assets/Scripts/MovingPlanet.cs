@@ -24,6 +24,6 @@ public class MovingPlanet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Time.
+        transform.position = new Vector3(Mathf.Sin(0), Mathf.Sin(0), 0);
     }
 }
