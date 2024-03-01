@@ -17,25 +17,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenuScene.unity
     guid: 1b1c6c3da30cc8d4eb81d7dcaf3e2eeb
-  - enabled: 0
-    path: Assets/Scenes/Completed_Levels/Level1_LostInSpace.unity
-    guid: 1bb3e3a6215cb4a49b1914c2a4cb66db
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 3b6fd286c29325f43924aa2c65cf71b0
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 37be3a269f1338a4c8c641aade35d662
-  - enabled: 0
-    path: Assets/Scenes/Completed_Levels/OnboardingLevel4_Physics201.unity
-    guid: 19a377d631daf3f42ae973a272415554
   - enabled: 1
     path: Assets/Scenes/Completed_Levels/OnboardingLevel1_RocketSchool.unity
     guid: a88cf88cfb784b647a87ed3967a14813
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Completed_Levels/OnboardingLevel2_Physics101.unity
     guid: be778a7c0de87c0409ab7a6ce4d8012d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Completed_Levels/OnboardingLevel3_Physics102.unity
     guid: 87faad90562e314479ae29700ed4b8fc
+  - enabled: 1
+    path: Assets/Scenes/Completed_Levels/OnboardingLevel4_Physics201.unity
+    guid: 19a377d631daf3f42ae973a272415554
+  - enabled: 1
+    path: Assets/Scenes/Completed_Levels/OnboardingLevel5_RocketScience.unity
+    guid: 253425442f8d8634ebeb8f19e696476d
+  - enabled: 1
+    path: Assets/Scenes/Completed_Levels/Level6_LostInSpace.unity
+    guid: 1bb3e3a6215cb4a49b1914c2a4cb66db
+  - enabled: 1
+    path: Assets/Scenes/Completed_Levels/Level7_OrbitalSchmovement.unity
+    guid: 50b8c54f596a0e445a6d34e85f30e3b1
   m_configObjects: {}
