@@ -8,23 +8,24 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScene : MonoBehaviour
 {
-
+    public static string sceneToLoad;
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         StartCoroutine(LoadSceneAsyc());
     }
 
     IEnumerator LoadSceneAsyc()
     {
         //This operation uses the sceneToLoad to load the next scene allowing this to be reused
-        AsyncOperation operation = SceneManager.LoadSceneAsync(LoadingData.sceneToLoad);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
         //Stop next scene from loading
         operation.allowSceneActivation = false;
-        
+
         while (!operation.isDone)
         {
             //Here we can add whatever else we want. Tips and stuff
-            
+
 
             if (operation.progress >= 0.9f)
             {

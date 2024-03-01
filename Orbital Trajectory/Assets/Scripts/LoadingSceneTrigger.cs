@@ -6,22 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class LoadingSceneTrigger : MonoBehaviour
 {
-    [SerializeField]
-    string targetScene;
+    public string targetScene;
 
     public void LoadScene()
     {
         if(targetScene == "")
         {
             targetScene = SceneManager.GetActiveScene().name;
-            LoadingData.sceneToLoad = targetScene;
+            LoadingScene.sceneToLoad = targetScene;
             SceneManager.LoadScene("LoadingScene");
         }
         else
         {
-            LoadingData.sceneToLoad = targetScene;
+            LoadingScene.sceneToLoad = targetScene;
             SceneManager.LoadScene("LoadingScene");
         }
-        
+
+    }
+    public void LoadLevelSelect()
+    {
+        GameData.LoadLevelSelect();
     }
 }
