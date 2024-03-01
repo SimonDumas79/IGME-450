@@ -611,8 +611,15 @@ MonoBehaviour:
   startPosition: {x: 0, y: -15, z: 0}
   middlePosition: {x: -28, y: -14.5, z: 0}
   endPosition: {x: -13, y: -7, z: 0}
-  fadeTime: 1.5
+  fadeTimeBase: 1.5
+  startToMiddleTimer: 0
+  startToMiddleTimerBase: 2
+  middleToEndTimer: 0
+  middleToEndTimerBase: 2
+  pauseTimeBase: 0.5
   state: 0
+  visible: 0
+  fadeSpeedMultiplier: 1
 --- !u!1 &2022965250 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2996336161443094384, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
