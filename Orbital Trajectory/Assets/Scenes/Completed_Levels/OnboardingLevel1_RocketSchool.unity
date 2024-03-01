@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -46
       objectReference: {fileID: 0}
+    - target: {fileID: 6919256302288769037, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: targetScene
+      value: Assets/Scenes/Completed_Levels/OnboardingLevel2_Physics101.unity
+      objectReference: {fileID: 0}
     - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -117.29999
@@ -386,6 +390,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+--- !u!1 &485504296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3277098866592215682, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+  m_PrefabInstance: {fileID: 485504295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &656284206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,6 +403,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5476522367056667900, guid: b6ec264e748e0f642abe50b4fd8f9036, type: 3}
+      propertyPath: endUI
+      value: 
+      objectReference: {fileID: 485504296}
     - target: {fileID: 7281613291935127457, guid: b6ec264e748e0f642abe50b4fd8f9036, type: 3}
       propertyPath: m_Name
       value: Gate

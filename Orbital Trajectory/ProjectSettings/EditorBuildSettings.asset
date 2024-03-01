@@ -23,19 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 3b6fd286c29325f43924aa2c65cf71b0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 37be3a269f1338a4c8c641aade35d662
   - enabled: 0
-    path: Assets/Scenes/OnboardingLevel4_Physics201.unity
+    path: Assets/Scenes/Completed_Levels/OnboardingLevel4_Physics201.unity
     guid: 19a377d631daf3f42ae973a272415554
   - enabled: 1
-    path: Assets/Scenes/OnboardingLevel1_RocketSchool.unity
+    path: Assets/Scenes/Completed_Levels/OnboardingLevel1_RocketSchool.unity
     guid: a88cf88cfb784b647a87ed3967a14813
   - enabled: 0
-    path: Assets/Scenes/OnboardingLevel2_Physics101.unity
+    path: Assets/Scenes/Completed_Levels/OnboardingLevel2_Physics101.unity
     guid: be778a7c0de87c0409ab7a6ce4d8012d
   - enabled: 0
-    path: Assets/Scenes/OnboardingLevel3_Physics102.unity
+    path: Assets/Scenes/Completed_Levels/OnboardingLevel3_Physics102.unity
     guid: 87faad90562e314479ae29700ed4b8fc
   m_configObjects: {}
