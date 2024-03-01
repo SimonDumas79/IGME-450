@@ -22,42 +22,50 @@ public class TutorialHand : MonoBehaviour
     public Vector3 middlePosition;
     public Vector3 endPosition;
 
-    public float fadeTime;
-    private float fadeTimeBase;
+    private float fadeTime;
+    public float fadeTimeBase = 1.5f;
     private int fadeDirection = 1; //should only be 1 or -1
 
+    [SerializeField]
     private float startToMiddleTimer;
-    private float startToMiddleTimerBase = 2.0f;
+    public float startToMiddleTimerBase = 2.0f;
 
+    [SerializeField]
     private float middleToEndTimer;
-    private float middleToEndTimerBase = 2.0f;
+    public float middleToEndTimerBase = 2.0f;
 
     private float pauseTime = 0.5f;
-    private float pauseTimeBase = 0.5f;
+    public float pauseTimeBase = 0.5f;
 
     [SerializeField]
     private HandState state = HandState.fadeIn;
 
     private SpriteRenderer sr;
 
+    public bool visible;
+    private bool baseVisibility;
+
+    public float fadeSpeedMultiplier = 1;
+
     private void Start()
     {
         startPosition = transform.position;
-        fadeTimeBase = fadeTime;
         sr = GetComponent<SpriteRenderer>();
         Color color = sr.color;
         color.a = 0;
         sr.color = color;
+        baseVisibility = visible;
+        fadeTime = fadeTimeBase;
     }
     void Update()
     {
-        if (!player.Launched)
+        if (visible)
         {
             switch (state)
             {
                 case HandState.fadeIn:
                     fadeTime -= Time.deltaTime;
-                    ChangeAlpha(fadeDirection);
+                    ChangeAlpha(fadeDirection, fadeSpeedMultiplier);
                     if (fadeTime < 0)
                     {
                         state = HandState.startToMiddle;
@@ -162,12 +170,17 @@ public class TutorialHand : MonoBehaviour
         {
             ChangeAlpha(-1, 3.0f);
         }
+
+        if(player.Launched)
+        {
+            visible = !baseVisibility;
+        }
     }
 
     private void ChangeAlpha(int direction, float speedMultiplier = 1.0f)
     {
         Color color = sr.color;
-        color.a = color.a + (direction * Time.deltaTime * fadeTime);
+        color.a = Mathf.Clamp01(color.a + (direction * Time.deltaTime * fadeTime * speedMultiplier));
         sr.color = color;
     }
 }

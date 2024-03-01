@@ -94,7 +94,6 @@ public class PlayerController : MonoBehaviour
             {
                 dragAngle = -(transform.position - mousePosition).normalized;
                 DrawTrajectory();
-                Debug.Log(dragAngle);
             }
 
             //angle the ship towards the shot angle

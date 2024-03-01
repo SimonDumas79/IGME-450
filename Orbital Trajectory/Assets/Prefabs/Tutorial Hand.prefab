@@ -106,3 +106,5 @@ MonoBehaviour:
   endPosition: {x: 0, y: 0, z: 0}
   fadeTime: 1.5
   state: 0
+  visible: 0
+  baseVisibility: 0
