@@ -26,13 +26,11 @@ public class GameData
         }
         return sceneString;
     }
+
     public static void LoadLevelSelect()
     {
-        
         levelList = getAllLevels();
-        LoadingData.sceneToLoad = "LevelSelect";
+        LoadingScene.sceneToLoad = "LevelSelect";
         SceneManager.LoadScene("LoadingScene");
-        
     }
 }
-

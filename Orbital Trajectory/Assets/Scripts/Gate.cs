@@ -1,29 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour
 {
     [SerializeField]
-    BoxCollider2D player;
-    [SerializeField]
-    CapsuleCollider2D collide;
+    private BoxCollider2D player;
 
-    // Start is called before the first frame update
+    private bool finishedDisplaying = false;
+
+    [SerializeField]
+    private GameObject endUI;
+
     void Start()
     {
-        collide.isTrigger = true;
+        endUI = FindFirstObjectByType<EndScreen>(FindObjectsInactive.Include)?.gameObject;
+        if(endUI != null)
+        {
+            endUI.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
+        if(endUI != null)
+        {
+            endUI.SetActive(true);
+        }
     }
 }

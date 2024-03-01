@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4920294654089729366}
   - component: {fileID: 8847852296983873630}
   - component: {fileID: 2571412321283488701}
-  - component: {fileID: 5510083968105217509}
+  - component: {fileID: -4415697714190478118}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -123,9 +123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5510083968105217509}
-        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: testOnclick
+      - m_Target: {fileID: -4415697714190478118}
+        m_TargetAssemblyTypeName: LoadingSceneTrigger, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5510083968105217509
+--- !u!114 &-4415697714190478118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,9 +144,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3693565608141772215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e0f34ca688fcfb43b205661b7add2a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 949c610148a2192438cd20c013fa3a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetScene: 
 --- !u!1 &4177765962737639756
 GameObject:
   m_ObjectHideFlags: 0
