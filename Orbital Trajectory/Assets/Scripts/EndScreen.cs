@@ -25,7 +25,7 @@ public class EndScreen : MonoBehaviour
         {
             nextSceneTrigger.targetScene = GameData.levelList[levelIndex + 1];
         }
-        gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -39,4 +39,5 @@ public class EndScreen : MonoBehaviour
         float fuel = FindAnyObjectByType<FuelBar>().slider.value;
         return Mathf.FloorToInt(fuel * 1000.0f);
     }
+
 }

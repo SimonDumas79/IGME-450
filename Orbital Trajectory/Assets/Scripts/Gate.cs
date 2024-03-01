@@ -16,10 +16,11 @@ public class Gate : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         endUI = FindFirstObjectByType<EndScreen>(FindObjectsInactive.Include)?.gameObject;
         if(endUI != null)
         {
-            endUI.SetActive(false);
+            //endUI.SetActive(false);
         }
     }
 
@@ -27,7 +28,8 @@ public class Gate : MonoBehaviour
     {
         if(endUI != null)
         {
-            endUI.SetActive(true);
+            endUI.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

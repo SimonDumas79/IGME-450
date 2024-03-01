@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949c610148a2192438cd20c013fa3a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: Level1_LostInSpace
+  targetScene: OnboardingLevel1_RocketSchool
 --- !u!1 &550108392
 GameObject:
   m_ObjectHideFlags: 0

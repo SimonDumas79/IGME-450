@@ -10,10 +10,10 @@ public class GameData
     public static List<string> levelList;
     public static List<string> getAllLevels()
     {
-        Scene scenes = SceneManager.GetSceneByPath("./Assets/Scenes/Completed_Levels");
+        
         int counter = 0;
 
-        List<Scene> sceneNames = new List<Scene>();
+        
         List<string> sceneString = new List<string>();
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
