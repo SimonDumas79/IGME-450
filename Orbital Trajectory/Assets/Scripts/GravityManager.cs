@@ -8,16 +8,19 @@ public class GravityManager : MonoBehaviour
     public static GravityManager singleton;
 
     [SerializeField]
-    private int gravitationalConstant;
+    public int gravitationalConstant;
     [SerializeField]
-    private List<GravityObject> staticGravityObjects;
+    public List<GravityObject> staticGravityObjects;
     [SerializeField]
-    private List<GravityObject> gravityObjects;
+    public List<GravityObject> gravityObjects;
+
+    [SerializeField]
+    public GameObject trajectoryIndicatorPrefab;
 
     [SerializeField]
     public bool run;
 
-    void Start()
+    public void Start()
     {
         gravityObjects = new List<GravityObject>();
         staticGravityObjects = new List<GravityObject>();
@@ -51,7 +54,7 @@ public class GravityManager : MonoBehaviour
         }
     }
 
-    private Vector2 CalculateGravity(Vector2 pos1, float mass1, Vector2 pos2, float mass2, float timeStep)
+    public Vector2 CalculateGravity(Vector2 pos1, float mass1, Vector2 pos2, float mass2, float timeStep)
     {
         Vector2 direction = pos2 - pos1;
         float distance = direction.magnitude;
@@ -96,7 +99,6 @@ public class GravityManager : MonoBehaviour
             return null;
         }
 
-        float timeSteps = time/simSteps;
         int amountBetweenDisplays = simSteps/stepsToDisplay;
         for(int s = 0; s < simSteps; s++)
         {
@@ -109,19 +111,19 @@ public class GravityManager : MonoBehaviour
             {
                 for(int j = 0; j < staticGravityObjects.Count; j++)
                 {
-                    Vector2 force = CalculateGravity(dynamicObjectPositions[i], gravityObjects[i].mass, staticGravityObjects[j].transform.position, staticGravityObjects[j].mass, timeSteps);
+                    Vector2 force = CalculateGravity(dynamicObjectPositions[i], gravityObjects[i].mass, staticGravityObjects[j].transform.position, staticGravityObjects[j].mass, Time.fixedDeltaTime);
                     dynamicObjectAccelerations[i] += force/gravityObjects[i].mass;
                 }
 
                 for(int j = i + 1; j < gravityObjects.Count; j++)
                 {
-                    Vector2 force = CalculateGravity(dynamicObjectPositions[i], gravityObjects[i].mass, dynamicObjectPositions[j], gravityObjects[j].mass, timeSteps);
+                    Vector2 force = CalculateGravity(dynamicObjectPositions[i], gravityObjects[i].mass, dynamicObjectPositions[j], gravityObjects[j].mass, Time.fixedDeltaTime);
                     dynamicObjectAccelerations[i] += force/gravityObjects[i].mass;
                     dynamicObjectAccelerations[j] -= force/gravityObjects[j].mass;
                 }
 
-                dynamicObjectPositions[i] += (dynamicObjectVelocities[i] * timeSteps) + (timeSteps * timeSteps * dynamicObjectAccelerations[i]);
-                dynamicObjectVelocities[i] += dynamicObjectAccelerations[i] * timeSteps;
+                dynamicObjectPositions[i] += (dynamicObjectVelocities[i] * Time.fixedDeltaTime) + (Time.fixedDeltaTime * Time.fixedDeltaTime * dynamicObjectAccelerations[i]);
+                dynamicObjectVelocities[i] += dynamicObjectAccelerations[i] * Time.fixedDeltaTime;
             }
 
             if((s + 1) % amountBetweenDisplays == 0)
