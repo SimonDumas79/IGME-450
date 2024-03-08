@@ -302,15 +302,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6804977711179114702, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.03773582
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6804977711179114702, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.023268443
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6804977711179114702, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.014061932
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6919256302288769037, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: targetScene
@@ -672,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1675818121857571913, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
       propertyPath: secondsToPredict
-      value: 5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2996336161443094384, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
       propertyPath: m_Name
