@@ -30,7 +30,6 @@ public class MovingPlanet : MonoBehaviour
         {
             rotation = Mathf.PI + (Mathf.PI - rotation);
         }
-        Debug.Log(rotation);
     }
 
     // Update is called once per frame
