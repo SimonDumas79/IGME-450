@@ -38,6 +38,6 @@ public class MovingPlanet : MonoBehaviour
     {
         rotation += 2 * Mathf.PI * (Time.deltaTime / baseTimeForCycle);
 
-        transform.position = new Vector3(radius * Mathf.Cos(rotation), radius * Mathf.Sin(rotation), 0);
+        transform.position = centralBody.transform.position + new Vector3(radius * Mathf.Cos(rotation), radius * Mathf.Sin(rotation), 0);
     }
 }
