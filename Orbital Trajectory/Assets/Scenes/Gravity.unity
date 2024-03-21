@@ -155,12 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f17b31efe163770dba49d802380a3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 10
+  mass: 1000
   initialVelocity: {x: 0, y: 0}
   isKinematic: 0
   rb: {fileID: 312574038}
   pointsToDisplay: 15
   timeToPredict: 3
+  toOrbit: {fileID: 0}
 --- !u!212 &312574035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -473,6 +474,7 @@ MonoBehaviour:
   rb: {fileID: 1163034248}
   pointsToDisplay: 10
   timeToPredict: 5
+  toOrbit: {fileID: 312574034}
 --- !u!212 &1163034245
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -636,7 +638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6657331891216498772, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.1
+      value: 25.4
       objectReference: {fileID: 0}
     - target: {fileID: 6657331891216498772, guid: 67808929dc6b94546a9c97dc482e9746, type: 3}
       propertyPath: m_LocalPosition.y
