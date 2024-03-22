@@ -13,7 +13,7 @@ public class GravityLines : MonoBehaviour
         mass = GetComponentInParent<GravityObject>().mass;
 
         //max mass 1500 min 500
-        float minMass = 100;
+        float minMass = 20;
         float maxMass = 1500;
         float massRatio = (mass - minMass) / (maxMass - minMass);
 
