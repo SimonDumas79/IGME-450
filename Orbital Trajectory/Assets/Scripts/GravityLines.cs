@@ -23,6 +23,12 @@ public class GravityLines : MonoBehaviour
         float minSpeed = -1;
         float maxSpeed = -10;
 
+        float minScale = 3f;
+        float maxScale = 25f;
+
+        float minMultiplier = .25f;
+        float maxMultiplier = 4.0f;
+
         float minLifetime = .1f;
         float maxLifetime = .5f;
 
@@ -33,8 +39,9 @@ public class GravityLines : MonoBehaviour
 
         //set the emission to fit the mass of the planet
         ParticleSystem.EmissionModule emissionModule = ps.emission;
-        emissionModule.rateOverTime = Mathf.Lerp(minEmission, maxEmission, massRatio);
-
+        emissionModule.rateOverTime = Mathf.Lerp(minEmission, maxEmission, massRatio) 
+            * Mathf.Lerp(minMultiplier, maxMultiplier, Mathf.Clamp01((scale - minScale) / (maxScale - minScale)));
+        
         //set the speed to fit the mass of the planet
         ParticleSystem.MainModule mainModule = ps.main;
         mainModule.startLifetime = Mathf.Lerp(maxLifetime, minLifetime, massRatio);

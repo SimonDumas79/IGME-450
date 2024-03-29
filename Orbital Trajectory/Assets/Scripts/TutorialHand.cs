@@ -43,21 +43,33 @@ public class TutorialHand : MonoBehaviour
     private SpriteRenderer sr;
 
     public bool visible;
+    protected bool fadesOut;
     private bool baseVisibility;
+
 
     public float fadeSpeedMultiplier = 1;
 
-    private void Start()
+    virtual protected void Start()
     {
-        startPosition = transform.position;
         sr = GetComponent<SpriteRenderer>();
         Color color = sr.color;
         color.a = 0;
         sr.color = color;
         baseVisibility = visible;
         fadeTime = fadeTimeBase;
+        fadesOut = true;
     }
     void Update()
+    {
+        UpdateHand();
+
+        if(player.Launched)
+        {
+            visible = !baseVisibility;
+        }
+    }
+
+    protected void UpdateHand()
     {
         if (visible)
         {
@@ -139,8 +151,15 @@ public class TutorialHand : MonoBehaviour
                     }
                     if (pauseTime < 0)
                     {
-                        state = HandState.fadeOut;
-                        pauseTime = pauseTimeBase;
+                        if(fadesOut)
+                        {
+                            state = HandState.fadeOut;
+                            pauseTime = pauseTimeBase;
+                        }
+                        else
+                        {
+                            state = HandState.startToMiddle;
+                        }
                     }
                     break;
                 case HandState.fadeOut:
@@ -169,11 +188,6 @@ public class TutorialHand : MonoBehaviour
         else
         {
             ChangeAlpha(-1, 3.0f);
-        }
-
-        if(player.Launched)
-        {
-            visible = !baseVisibility;
         }
     }
 

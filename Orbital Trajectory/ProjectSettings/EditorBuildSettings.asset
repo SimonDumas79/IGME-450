@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/PauseScene.unity
-    guid: 0bbab833a7d688941ab14599d22eeeb3
-  - enabled: 0
     path: Assets/Scenes/Gravity.unity
     guid: c6a83da571288a96fabd25b9ceb1d0ee
   - enabled: 1
@@ -47,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Completed_Levels/Level8_LunarOrbits.unity
     guid: 020d98f19cc98a84aaf3240eb76fad00
+  - enabled: 1
+    path: Assets/Scenes/PauseScene.unity
+    guid: 0bbab833a7d688941ab14599d22eeeb3
   m_configObjects: {}
