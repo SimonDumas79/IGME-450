@@ -171,7 +171,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97649938}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -188,7 +188,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &97649941
 MonoBehaviour:
@@ -534,7 +534,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &142594244
 CircleCollider2D:
@@ -1150,6 +1150,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1601527475450200444, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2356009308681121628, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1202,6 +1206,10 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4349225504342081132, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5588315722711933227, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
@@ -1244,7 +1252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -121.350006
+      value: -121.35004
       objectReference: {fileID: 0}
     - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_AnchoredPosition.y
