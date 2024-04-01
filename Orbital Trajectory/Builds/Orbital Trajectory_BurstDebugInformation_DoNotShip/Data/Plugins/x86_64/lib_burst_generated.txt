@@ -1,4 +1,4 @@
-Library: D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+Library: D:\Profiles\sad1667\source\repos\IGME-450\Orbital Trajectory\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --backend=burst-llvm-15
 --target=AVX2
@@ -50,10 +50,10 @@ Library: D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Temp\BurstOut
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="Orbital Trajectory_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Temp\Burst
+--temp-folder=D:\Profiles\sad1667\source\repos\IGME-450\Orbital Trajectory\Temp\Burst
 --key-folder=C:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Library\Burst
---output=D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=D:\Profiles\sad1667\source\repos\IGME-450\Orbital Trajectory\Library\Burst
+--output=D:\Profiles\sad1667\source\repos\IGME-450\Orbital Trajectory\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
@@ -138,10 +138,10 @@ Library: D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Temp\BurstOut
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="Orbital Trajectory_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Temp\Burst
+--temp-folder=D:\Profiles\sad1667\source\repos\IGME-450\Orbital Trajectory\Temp\Burst
 --key-folder=C:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Library\Burst
---output=D:\Profiles\rac3090\Documents\IGME-450\Orbital Trajectory\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=D:\Profiles\sad1667\source\repos\IGME-450\Orbital Trajectory\Library\Burst
+--output=D:\Profiles\sad1667\source\repos\IGME-450\Orbital Trajectory\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10

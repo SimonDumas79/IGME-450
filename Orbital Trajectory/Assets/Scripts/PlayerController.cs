@@ -187,4 +187,10 @@ public class PlayerController : MonoBehaviour
         color.a -=Time.deltaTime;
         radius.GetComponent<SpriteRenderer>().color = color;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //set death menu to active
+        //Time.timeScale = 0;
+    }
 }
