@@ -329,6 +329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 3693565608141772215, guid: 7fd8b15705f81324db24026c9ea2f92c, type: 3}
+  startPos: {x: 250, y: 500}
+  offset: {x: 200, y: -100}
+  numButtonsPerRow: 4
 --- !u!1 &2017972469
 GameObject:
   m_ObjectHideFlags: 0

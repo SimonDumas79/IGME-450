@@ -23,8 +23,23 @@ public class LevelSelectManager : MonoBehaviour
      */
     [SerializeField]
     GameObject buttonPrefab;
+
+    [SerializeField]
+    Vector2 startPos;
+
+    [SerializeField]
+    Vector2 offset;
+
+    [SerializeField]
+    int numButtonsPerRow;
+
     void Start()
     {
+        if(GameData.levelList == null)
+        {
+            GameData.levelList = GameData.getAllLevels();
+        }
+
         Canvas canvas = FindAnyObjectByType<Canvas>();
         for(int i = 0; i < GameData.levelList.Count; i++)
         {
@@ -34,6 +49,7 @@ public class LevelSelectManager : MonoBehaviour
             TMP_Text text = makeButton.GetComponentInChildren<TMP_Text>();
             text.text = FormatLevelName(fullLevelName);
             Debug.Log(makeButton.name);
+            makeButton.transform.position = startPos + new Vector2(offset.x * (i % numButtonsPerRow), offset.y * (i/numButtonsPerRow));
         }
     }
 
