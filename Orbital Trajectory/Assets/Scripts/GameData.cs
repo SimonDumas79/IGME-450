@@ -8,12 +8,13 @@ public class GameData
 {
     static Scene LevelSelect;
     public static List<string> levelList;
+    public static string levelProgressName = "MaxLevel";
     public static List<string> getAllLevels()
     {
-        
+
         int counter = 0;
 
-        
+
         List<string> sceneString = new List<string>();
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {

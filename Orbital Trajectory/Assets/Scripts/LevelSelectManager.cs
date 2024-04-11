@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager.UI;
 
 public class LevelSelectManager : MonoBehaviour
 {
@@ -25,21 +26,27 @@ public class LevelSelectManager : MonoBehaviour
     GameObject buttonPrefab;
 
     [SerializeField]
-    Vector2 startPos;
-
-    [SerializeField]
-    Vector2 offset;
+    Vector2 margins;
 
     [SerializeField]
     int numButtonsPerRow;
 
     void Start()
     {
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+
+        Vector2 startPos = new Vector2(screenSize.x * margins.x, screenSize.y * (1 - margins.y));
+        float aspectRatio = screenSize.x/screenSize.y;
+        float totalWidth = screenSize.x - (startPos.x * 2);
+        float widthPerButton = totalWidth/(numButtonsPerRow - 1);
+        Vector2 offset = new Vector2(widthPerButton, -widthPerButton/aspectRatio);
+
         if(GameData.levelList == null)
         {
             GameData.levelList = GameData.getAllLevels();
         }
-
+        int maxLevel = PlayerPrefs.HasKey(GameData.levelProgressName) ? PlayerPrefs.GetInt(GameData.levelProgressName) : 0;
+        Debug.Log($"Max Level: {maxLevel}");
         Canvas canvas = FindAnyObjectByType<Canvas>();
         for(int i = 0; i < GameData.levelList.Count; i++)
         {
@@ -50,6 +57,11 @@ public class LevelSelectManager : MonoBehaviour
             text.text = FormatLevelName(fullLevelName);
             Debug.Log(makeButton.name);
             makeButton.transform.position = startPos + new Vector2(offset.x * (i % numButtonsPerRow), offset.y * (i/numButtonsPerRow));
+
+            if(i > maxLevel)
+            {
+                makeButton.GetComponent<Button>().interactable = false;
+            }
         }
     }
 

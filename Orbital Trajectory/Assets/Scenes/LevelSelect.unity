@@ -329,9 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 3693565608141772215, guid: 7fd8b15705f81324db24026c9ea2f92c, type: 3}
-  startPos: {x: 250, y: 500}
-  offset: {x: 200, y: -100}
-  numButtonsPerRow: 4
+  margins: {x: 0.2, y: 0.2}
+  numButtonsPerRow: 3
 --- !u!1 &2017972469
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
