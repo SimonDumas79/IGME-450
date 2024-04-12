@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1245092781
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d93741c96c0c37242b23691e4eb08e3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,7 +104,12 @@ MonoBehaviour:
   startPosition: {x: 0, y: -15, z: 0}
   middlePosition: {x: -27.09648, y: 0.11, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
-  fadeTime: 1.5
+  fadeTimeBase: 1.5
+  startToMiddleTimer: 0
+  startToMiddleTimerBase: 2
+  middleToEndTimer: 0
+  middleToEndTimerBase: 2
+  pauseTimeBase: 0.5
   state: 0
   visible: 0
-  baseVisibility: 0
+  fadeSpeedMultiplier: 0

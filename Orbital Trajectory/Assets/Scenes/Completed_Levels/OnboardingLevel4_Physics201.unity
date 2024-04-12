@@ -295,6 +295,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2632383728162955558, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632383728162955558, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2907981940515664122, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.9000244
+      objectReference: {fileID: 0}
     - target: {fileID: 4349225504342081132, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_Camera
       value: 
@@ -307,6 +319,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5836780858780543124, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6919256302288769037, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: targetScene
       value: OnboardingLevel5_RocketScience
@@ -318,6 +334,10 @@ PrefabInstance:
     - target: {fileID: 6921733750935158094, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006005737112078407, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -605.19995
       objectReference: {fileID: 0}
     - target: {fileID: 8541718067283643144, guid: bf79f5d16fbe9984cb2a89240932caf1, type: 3}
       propertyPath: m_Name
