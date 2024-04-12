@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Background
   - 
   - 
   - 
@@ -38,6 +38,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1250551185
+    locked: 0
+  - name: Other
+    uniqueID: 1654657887
+    locked: 0
+  - name: Particles
+    uniqueID: 706644729
+    locked: 0
+  - name: Planets
+    uniqueID: 915982833
+    locked: 0
+  - name: Player
+    uniqueID: 4049122075
+    locked: 0
+  - name: UI
+    uniqueID: 1245092781
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
